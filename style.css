@@ -1,0 +1,130 @@
+:root{
+  --gutter: 50px;     
+  --left-fr: 2fr;
+  --right-fr: 1fr;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;font-family:Arial, sans-serif;}
+
+.page{
+  display:grid;
+  grid-template-columns: var(--left-fr) var(--gutter) var(--right-fr);
+  grid-template-rows: auto 1fr auto;
+  min-height:100vh;
+}
+
+.block{
+  border:1px solid #222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:16px;
+  background-clip:padding-box;
+}
+
+.block1{grid-column:1; grid-row:1; background:#e2c55c; min-height: 18vh; justify-content: space-between;}
+.block3{grid-column:1; grid-row:2; background:#ffffff;}
+.block4{grid-column:1; grid-row:3; background:#e2c55c; min-height: 18vh; justify-content: space-between;}
+.block1, .block4 { align-items: center; }
+
+.gutter{
+  grid-column:2;
+  grid-row:1/4;
+  background:#ffffff;
+  border-left:1px solid #111;
+  border-right:1px solid #111;
+}
+
+.block2{grid-column:3; grid-row:1/3; background:#52b2ed;}
+.block5{grid-column:3; grid-row:3; background:#d14c4a;min-height: 18vh;}
+
+.badge{
+  background:#fff;
+  border:1px solid #333;
+  padding:6px 10px;
+  border-radius:4px;
+  font-weight:700;
+  box-shadow:0 1px 1px rgba(0,0,0,0.08);
+  width: 100px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block3 p{max-width:90%; margin:8px 0; line-height:1.45;}
+
+.menu{list-style:none;padding:16px;margin:0;}
+.menu li{margin:8px 0;}
+.menu a{color:inherit; text-decoration:none;}
+
+@media (max-width:700px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+  }
+
+  /* Remove central gutter */
+  .gutter {
+    display: none;
+  }
+
+  /* Blocks take full width */
+  .block1, .block2, .block3, .block4, .block5 {
+    grid-column: 1;
+    min-height: auto;
+    border-width: 0 0 1px 0;
+  }
+
+  .block1 {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .block3 {
+    padding: 12px;
+  }
+
+  .block3 p {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .block4 {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  /* Menu becomes top horizontal */
+  .block2 {
+    order: 2;
+    background: #52b2ed;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .menu li {
+    margin: 0;
+  }
+
+  /* Keep footer quote centered */
+  .block5 {
+    text-align: center;
+    padding: 14px;
+  }
+
+  /* Badges above headings */
+  .badge {
+    width: auto;
+    padding: 5px 12px;
+    margin-bottom: 6px;
+  }
+}
